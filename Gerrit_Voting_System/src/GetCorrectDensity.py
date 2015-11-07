@@ -112,13 +112,14 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 ### Culcurate Former and Latter
 
 ### Output
-#print "ReviewId,NumOfCur,NumOfIncur"
+#print "ReviewId,PerOfCur,PerOfIncur"
 n = 10
-print ("id,NumOfCur,NumOfIncur,PerOfCur,PerOfIncur")
+print ("id,NumOfCur,NumOfIncur,PerOfCur,PerOfIncur,NumOfVotes")
 for i in reviewer_class:
-	print("%d,%d,%d,%f,%f" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur)))
-	#sum = reviewer_class[i].cur + reviewer_class[i].incur
+	sum = reviewer_class[i].cur + reviewer_class[i].incur
+	if(sum < 120):
+		print("%d,%d,%d,%f,%f,%d" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].cur+reviewer_class[i].incur))
 	#if sum >= 20:
 	#	reviewer_class[i].SetPerFormer(n)
 	#	reviewer_class[i].SetPerLatter(n)
-	#	print("%f,%f" % (reviewer_class[i].per_former, reviewer_class[i].per_latter))
+	#	print("%d,%f,%f" % (i,reviewer_class[i].per_former, reviewer_class[i].per_latter))
