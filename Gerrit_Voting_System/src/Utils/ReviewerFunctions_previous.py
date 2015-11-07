@@ -27,20 +27,13 @@ def JudgeVoteScore(m): # (Regular expression)
 	p2 = re.compile(r'Patch Set [1-9]*: Works for me')
 	p3 = re.compile(r'Patch Set [1-9]*: Verified')
 	p4 = re.compile(r'Patch Set [1-9]*: Sanity review passed') #
-	p5 = re.compile(r'Patch Set [1-9]*: Code-Review\+1')
-	p6 = re.compile(r'Patch Set [1-9]*: Workflow\+1')
-	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m) or p5.match(m) or p6.match(m):
+	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m):
 		return 1
 
     # Score -1
 	p1 = re.compile(r"Patch Set [1-9]*: I would prefer that you didn'*t submit this") #
 	p2 = re.compile(r'Patch Set [1-9]*: Sanity problems found') #
-	p3 = re.compile(r'Patch Set [1-9]*: Code-Review-1')
-	p4 = re.compile(r'Patch Set [1-9]*: Workflow-1')
-	p5 = re.compile(r"Patch Set [1-9]*: Doesn'*t seem to work")
-	p6 = re.compile(r"Patch Set [1-9]*: I would prefer that you didn'*t merge this")
-	p7 = re.compile(r'Patch Set [1-9]*: No score')
-	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m) or p5.match(m) or p6.match(m) or p7.match(m):
+	if p1.match(m) or p2.match(m):
 		return -1
 
     # Score 0
@@ -63,12 +56,11 @@ def JudgeDicisionMaking(m):
 		return 2
 
 	# Score -2
-	p1 = re.compile(r'Patch Set [1-9]*: Do not merge') #
+	p1 = re.compile(r"Patch Set [1-9]*: I would prefer that you didn'*t merge this") #
 	p2 = re.compile(r'Patch Set [1-9]*: Do not submit') #
 	p3 = re.compile(r'Patch Set [1-9]*: Major sanity problems found') #
 	p4 = re.compile(r'Uploaded patch set [1-9]*') #
-	p5 = re.compile(r'Patch Set [1-9]*: Fails') #
-	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m) or p5.match(m):
+	if p1.match(m) or p2.match(m) or p3.match(m) or p4.match(m):
 		return -2
 
 	# Not JudgeDicisionMaking
@@ -79,13 +71,12 @@ def IsReviewerClass(r, reviewer_class):
 	if reviewer_class[r] != 0:
 		return True
 	else:
-		#print "False"
 		return False
 
 def MakeReviewerClass(r, reviewer_class):
 	assert r > 0 and reviewer_class[r] == 0
 	reviewer_class[r] = ReviewerClass.Reviewer(r)
-	#print type(ReviewerClass.Reviewer(r))
+	#print "MakeClass"+str(r)
 	return r
 
 def IsCorrectVoting(r, s, judge):
@@ -95,3 +86,13 @@ def IsCorrectVoting(r, s, judge):
 	else:
 		assert (s == -1 and judge == 2) or (s == 1 and judge == -2)
 		return False
+def IsAutoTest(author):
+	# 1000049 -> Qt Sanity Bot
+	# -1 	  -> Gerrit System
+	# 1000060 -> Qt Continuous Integration System
+	# 1000191 -> Qt Submodule Update Bot
+	# 1002169 -> Qt Doc Bot
+	if(author == 1000049 or author == -1 or author == 1000060 or author == 1000191 or author == 1002169):
+		return 1	## The author is Auto Test.
+	else:
+		return 0

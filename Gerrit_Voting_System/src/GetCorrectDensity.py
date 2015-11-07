@@ -15,7 +15,7 @@ import time
 import MySQLdb
 from collections import defaultdict
 from datetime import datetime
-from Util import ReviewerFunctions
+from Utils import ReviewerFunctions
 from Class import ReviewerClass
 
 ### Init
@@ -25,7 +25,7 @@ if len(sys.argv) != 2 or (sys.argv[1] != "-y" and sys.argv[1] != "-n"):
 	exit()
 
 ### Connect DB
-cnct = MySQLdb.connect(db="qt",user="root", passwd="")
+cnct = MySQLdb.connect(db="qt",user="root", passwd="hirao")
 csr = cnct.cursor()
 
 ### Main
@@ -52,7 +52,7 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 			# And, We regard that "updated ---" comment is also decision comment.
 			# And, We regard that +2 score comment is the same as "merged", -2 score comment is the same as "abandoned".
 			# Summary -> "merged, abandoned, 'updated --- ', +2, -2" is {JudgeDicisionMaking commnet}
-			judge = ReviewerFunctions.JudgeDicisionMaking(m) 
+			judge = ReviewerFunctions.JudgeDicisionMaking(m)
 			if judge == 0:
 				s = ReviewerFunctions.JudgeVoteScore(m)
 				if(s == 1 or s == -1):
@@ -114,10 +114,11 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 ### Output
 #print "ReviewId,NumOfCur,NumOfIncur"
 n = 10
+print ("id,NumOfCur,NumOfIncur,PerOfCur,PerOfIncur")
 for i in reviewer_class:
-	#print("%d,%d,%d,%f,%f" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur))),
-	sum = reviewer_class[i].cur + reviewer_class[i].incur
-	if sum >= 20:
-		reviewer_class[i].SetPerFormer(n)
-		reviewer_class[i].SetPerLatter(n)
-		print("%f,%f" % (reviewer_class[i].per_former, reviewer_class[i].per_latter))
+	print("%d,%d,%d,%f,%f" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur)))
+	#sum = reviewer_class[i].cur + reviewer_class[i].incur
+	#if sum >= 20:
+	#	reviewer_class[i].SetPerFormer(n)
+	#	reviewer_class[i].SetPerLatter(n)
+	#	print("%f,%f" % (reviewer_class[i].per_former, reviewer_class[i].per_latter))
