@@ -25,12 +25,12 @@ if len(sys.argv) != 2 or (sys.argv[1] != "-y" and sys.argv[1] != "-n"):
 	exit()
 
 ### Connect DB
-cnct = MySQLdb.connect(db="qt",user="root", passwd="hirao")
+cnct = MySQLdb.connect(db="openstack",user="root", passwd="hirao")
 csr = cnct.cursor()
 
 ### Main
 pre = 1
-for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
+for Id in range(10001, 92985): #70814 <- Number Of Qt project's patchsets #92985 <- Number Of Openstack's patchsets
 	csr.execute("select ReviewId, Status from Review where ReviewId = '"+str(Id)+"';")
 	info = csr.fetchall()
 	csr.execute("select ReviewId, AuthorId, Message from Comment where ReviewId = '"+str(Id)+"' order by WrittenOn asc;")
@@ -38,7 +38,9 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 	reviewers_written = []	# Reviewer which has already written a comment in the patch
 	reviewers_List = [] 	# Reviewer which wrote comments in the patch Set (patch not equal patch Set)
 	reviewers_score = []
-
+	#### Hirao
+	noScoreCt = 0
+	#### Toshiki
 	### Extract status
 	assert len(info) == 0 or len(info) == 1
 	for information in info:
@@ -48,6 +50,7 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 	if status == "merged" or status == "abandoned": # We target the patches which were decided merged or abandoned
 		for comment in comments:
 			m = comment[2].replace("\n", "<br>")
+
 			# Judge whether or not this patch was desided by decision comment<"merged, abandoned"> which mean [status] of reviewdata.
 			# And, We regard that "updated ---" comment is also decision comment.
 			# And, We regard that +2 score comment is the same as "merged", -2 score comment is the same as "abandoned".
@@ -56,6 +59,9 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 			if judge == 0:
 				s = ReviewerFunctions.JudgeVoteScore(m)
 				if(s == 1 or s == -1):
+					#### Hirao
+					noScoreCt = noScoreCt + 1
+					#### Toshiki
 					reviewer = comment[1]
 					#print str(reviewer)+":"+str(m)
 					if reviewer in reviewers_written:	# A new Reviewer for this patch
@@ -108,18 +114,22 @@ for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets
 		# Init reviewers_List, reviewers_score
 		#reviewers_List = []
 		#reviewers_score = []
-
+		#### Hirao
+		if noScoreCt == 0:
+			print Id
+		#### Toshiki
 ### Culcurate Former and Latter
-
+"""
 ### Output
-#print "ReviewId,PerOfCur,PerOfIncur"
+print "ReviewId,PerOfCur,PerOfIncur"
 n = 10
-print ("id,NumOfCur,NumOfIncur,PerOfCur,PerOfIncur,NumOfVotes")
+#print ("id,NumOfCur,NumOfIncur,PerOfCur,PerOfIncur,NumOfVotes")
 for i in reviewer_class:
 	sum = reviewer_class[i].cur + reviewer_class[i].incur
-	if(sum < 120):
-		print("%d,%d,%d,%f,%f,%d" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].cur+reviewer_class[i].incur))
-	#if sum >= 20:
-	#	reviewer_class[i].SetPerFormer(n)
-	#	reviewer_class[i].SetPerLatter(n)
-	#	print("%d,%f,%f" % (i,reviewer_class[i].per_former, reviewer_class[i].per_latter))
+	#if(sum < 120):
+	#print("%d,%d,%d,%f,%f,%d" % (i, reviewer_class[i].cur, reviewer_class[i].incur,reviewer_class[i].cur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].incur/float(reviewer_class[i].cur+reviewer_class[i].incur), reviewer_class[i].cur+reviewer_class[i].incur))
+	if sum >= 20:
+		reviewer_class[i].SetPerFormer(n)
+		reviewer_class[i].SetPerLatter(n)
+		print("%d,%f,%f" % (i,reviewer_class[i].per_former, reviewer_class[i].per_latter))
+"""
