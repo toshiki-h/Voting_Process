@@ -1,0 +1,178 @@
+All-Dead-Projects
+All-Non-CI-Projects
+All-Non-Mirrored-Projects
+All-Projects
+All-Qt-Projects
+All-Test-Projects
+installer-framework/installer-framework
+ministro/ministro
+playground/alignedtimer
+playground/mimetypes
+playground/qt-creator/plugin-gammaray
+playground/qt-creator/plugin-scripting
+playground/qtaudio3d
+playground/qtjsonstream
+playground/qtmirserver
+playground/qtmock-ng
+playground/qtprocessmanager
+playground/qtqmlandroid
+playground/qtremoteobjects
+playground/qtsystemtest
+playground/scenegraph
+playground/uihelpers
+pyside/apiextractor
+pyside/generatorrunner
+pyside/pyside
+pyside/shiboken
+qt-apps/snowshoe
+qt-creator/binary-artifacts
+qt-creator/qt-creator
+qt-labs/cinematic3d
+qt-labs/gimp-qmlexporter
+qt-labs/jira2gv
+qt-labs/jom
+qt-labs/messagingframework
+qt-labs/photoshop-qmlexporter
+qt-labs/qbs
+qt-labs/qml-presentation-system
+qt-labs/qsettings-refactor
+qt-labs/qt5-everywhere-demo
+qt-labs/qtaddonmimetype
+qt-labs/qtest-qml
+qt-labs/qtgamepad
+qt-labs/qtquickcl
+qt-labs/qtscriptgenerator
+qt-labs/qtsensehat
+qt-labs/talk-schedule
+qt-labs/umlquick
+qt-labs/vstools
+qt-labs/weather-app
+qt-learning/education-course-materials
+qt-learning/learning-guides
+qt-mobility/qt-mobility
+qt-solutions/qt-solutions
+qt/qlalr
+qt/qt
+qt/qt3d
+qt/qt5
+qt/qtactiveqt
+qt/qtandroidextras
+qt/qtbase
+qt/qtcanvas3d
+qt/qtchooser
+qt/qtconnectivity
+qt/qtdeclarative
+qt/qtdeclarative-testsuites
+qt/qtdoc
+qt/qtdocgallery
+qt/qtenginio
+qt/qtfeedback
+qt/qtftp
+qt/qtgraphicaleffects
+qt/qthttp
+qt/qtimageformats
+qt/qtlocation
+qt/qtmacextras
+qt/qtmodeling
+qt/qtmultimedia
+qt/qtopcua
+qt/qtpim
+qt/qtpurchasing
+qt/qtqa
+ qt/qtquick1
+Qt Quick 1	(gitweb)
+ qt/qtquickcontrols
+Qt Quick Controls	(gitweb)
+ qt/qtquickcontrols-tizen
+Qt Quick Controls for Tizen	(gitweb)
+ qt/qtquickcontrols2
+Qt Quick Controls 2	(gitweb)
+ qt/qtrepotools
+Qt Repository Tools - git commands and hooks, etc.	(gitweb)
+ qt/qtscript
+Qt Script (JSC based)	(gitweb)
+ qt/qtsensors
+Qt Sensors	(gitweb)
+ qt/qtserialbus
+Support for CAN and potentially other serial buses.	(gitweb)
+ qt/qtserialport
+Qt Serial Port support	(gitweb)
+ qt/qtspeech
+Qt Speech support	(gitweb)
+ qt/qtstyleplugins
+Additional style plugins for Qt	(gitweb)
+ qt/qtsvg
+Qt SVG	(gitweb)
+ qt/qtsystems
+Qt Systems	(gitweb)
+ qt/qttools
+Qt Tools	(gitweb)
+ qt/qttranslations
+Qt Translations	(gitweb)
+ qt/qtwayland
+A toolbox for making Qt based Wayland compositors	(gitweb)
+ qt/qtwebchannel
+Qt WebChannel	(gitweb)
+ qt/qtwebengine
+Qt WebEngine	(gitweb)
+ qt/qtwebengine-chromium
+Vendor branch of Chromium. This is a submodule of qtwebengine - no point in cloning it separately.	(gitweb)
+ qt/qtwebkit
+Qt Webkit	(gitweb)
+ qt/qtwebkit-examples
+Examples for Qt Webkit	(gitweb)
+ qt/qtwebsockets
+Qt WebSockets	(gitweb)
+ qt/qtwebview
+Qt Web View	(gitweb)
+ qt/qtwinextras
+Qt Extras for Windows	(gitweb)
+ qt/qtx11extras
+Qt Extras for X11	(gitweb)
+ qt/qtx509
+AddOn for X.509 certificate management	(gitweb)
+ qt/qtxmlpatterns
+Qt XmlPatterns (Xpath, Xquery, ... engine)	(gitweb)
+ qt/qtxmlpatterns-testsuites
+External test suites for qtdeclarative. This is a submodule of qtdeclarative - no point in cloning it separately.	(gitweb)
+ qtonpi/mt-cross-tools
+Qt on Raspberry PI	(gitweb)
+ qtqa/gerrit
+The Qt Project's vendor branch of Gerrit Code Review	(gitweb)
+ qtqa/gerrit-plugin-replication
+The Qt Project's branch of Gerrit Replication plugin	(gitweb)
+ qtqa/release-testing
+Release testing feedback form	(gitweb)
+ qtqa/sysadmin
+Scripts used for the system administration of Qt automated test infrastructure. This repository mostly contains metadata for use with puppet ( http://www.puppetlabs.com/ ). Changes to this repo typically affect all production test machines within 0 .. 30 minutes.	(gitweb)
+ qtqa/testconfig
+Configuration data for the Qt CI system. This repository contains various settings used by the test scripts running in Qt’s Continuous Integration system.	(gitweb)
+ qtsdk/qtsdk
+Qt SDK packaging scripts	(gitweb)
+ test/project
+Test project. Shoot at will.	(gitweb)
+ www/doctools
+Tools & config related to doc.qt-project.org	(gitweb)
+ www/downloads
+downloads.qt-project.org configuration	(gitweb)
+ www/planetqt
+Qt Blog aggregator configuration	(gitweb)
+ {graveyard}/qlogger
+*** Obsolete Project. Merged into qt/qtbase. ***	(gitweb)
+ {graveyard}/qtbinaryjson
+*** Obsolete Project. Merged into qt/qtbase. ***	(gitweb)
+ {graveyard}/qtjsbackend
+Qt JS Backend (obsolete)	(gitweb)
+ {graveyard}/qtjsondb
+*** Orphaned Project *** Qt JsonDb - research NoSQL datastorage for Qt / QML	(gitweb)
+ {graveyard}/qtmultimediakit
+*** Obsolete Project. See qt/qtmultimedia instead. ***	(gitweb)
+ {graveyard}/qtphonon
+*** Dead repository. See https://projects.kde.org/projects/kdesupport/phonon instead ***	(gitweb)
+ {graveyard}/qtx11support
+*** Obsolete Project. See qt/qtx11extras instead. ***	(gitweb)
+ {graveyard}/quick3d
+*** Obsolete Project. See qt/qt3d instead. ***	(gitweb)
+ {graveyard}/v4vm
+*** Obsolete Project. Merged into qt/qtdeclarative. ***	(gitweb)
+␾D㑈Sᔬ:ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਣ/ਢ.ढ-ठ+ࠜ&ꆦªçç쏃ÅퟔÝ짉Ç쿎Ñ짉Ê
