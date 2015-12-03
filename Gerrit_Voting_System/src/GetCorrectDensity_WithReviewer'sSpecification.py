@@ -18,9 +18,6 @@ from datetime import datetime
 from Utils import ReviewerFunctions
 from Class import ReviewerClass
 
-### Init
-reviewer_class = defaultdict(lambda: 0)
-
 ### Validation
 assert len(sys.argv) == 2
 
@@ -30,6 +27,9 @@ csr = cnct.cursor()
 
 ### Main
 for project in open(sys.argv[1], "r"):
+	### Init
+	reviewer_class = defaultdict(lambda: 0)
+
 	project = project.replace("\n", "")
 	for Id in range(1, 70814): #70814 <- Number Of Qt project's patchsets #92985 <- Number Of Openstack's patchsets
 		csr.execute("select ReviewId, Status from Review where ReviewId = '"+str(Id)+"' and project = '"+str(project)+"';")
@@ -42,6 +42,7 @@ for project in open(sys.argv[1], "r"):
 
 		### Extract status
 		assert len(info) == 0 or len(info) == 1
+		status = ""
 		for information in info:
 			status = information[1]
 
@@ -108,7 +109,7 @@ for project in open(sys.argv[1], "r"):
 	### Output
 	#print "ReviewId,PerOfCur,PerOfIncur"
 	#n = 10
-	print ("Id,ProjectName,NumOfCur,NumOfIncur,NumOfAll,PerOfCur,PerOfIncur")
+	#print ("Id,ProjectName,NumOfCur,NumOfIncur,NumOfAll,PerOfCur,PerOfIncur")
 	for i in reviewer_class:
 		sum = reviewer_class[i].cur + reviewer_class[i].incur
 		print("%d,%s,%d,%d,%d,%f,%f" % (i, project, reviewer_class[i].cur, reviewer_class[i].incur, sum, reviewer_class[i].cur/float(sum), reviewer_class[i].incur/float(sum)))
